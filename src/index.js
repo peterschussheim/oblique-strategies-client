@@ -7,11 +7,11 @@ import 'tachyons'
 
 const rootEl = document.getElementById('root')
 
-ReactDOM.render(<App className="bg-gray" />, rootEl)
+ReactDOM.render(<App />, rootEl)
 
 if (module.hot) {
   module.hot.accept('./App', () => {
     const NextApp = require('./App').default
-    ReactDOM.render(<NextApp className="bg-gray" />, rootEl)
+    ReactDOM.render(<NextApp />, rootEl)
   })
 }

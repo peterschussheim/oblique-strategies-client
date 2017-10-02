@@ -18,18 +18,16 @@ class App extends Component {
     this.setState(prevState => ({
       currentCard: randomizer(cards)
     }))
-    console.log(this.state)
   }
 
   render() {
     const { currentCard, showEdition } = this.state
     return (
-      <div className="ma2">
+      <div className="ma2 bg-blue">
         <Button onClick={this.handleRefresh}>Load another strategy...</Button>
-        <Button onClick={this.handleRefresh}>Show Edition?</Button>
-        <div className="mw7 center pa2 mt6 mb6 bg-gray">
-          <header className="mw7-ns ml1 mr1 mt3 mb3 center">
-            <h1 className="tc f3 f2-m f1-l fw2 mv3 mt0 black">
+        <div className="mw7-ns center pa3 mt4 mb4">
+          <header className="ml1 mr1 mt3 mb3 center">
+            <h1 className="f3 f2-m f1-l tc f-subheadline lh-title fw2 mv3 mt0 black">
               {currentCard.content}
             </h1>
           </header>
