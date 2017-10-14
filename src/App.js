@@ -19,7 +19,7 @@ const styles = {
     zIndex: '999'
   },
   modal: {
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
     position: 'fixed',
     height: '100%',
     width: '100%',
@@ -28,6 +28,11 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  modalContainer: {
+    display: 'flex',
+    height: '50%',
+    width: '75%'
   },
   modalButton: {
     position: 'flex',
@@ -70,21 +75,25 @@ class App extends Component {
       <Modal>
         <div style={styles.modal}>
           <button
-            className="close fixed right-2 top-2 pointer"
+            className="close dim fixed right-2 bg-transparent b--transparent top-2 pointer"
             styles={styles.modalButton}
             onClick={this.handleHide}
           >
-            <img src={require('./assets/close.svg')} alt="" />
+            <img src={require('./assets/close.svg')} alt="close-modal" />
           </button>
-          <p>
-            Oblique Strategies originated in the 1970s from two Gentlement...
-          </p>
+          <div className="bg-blue" style={styles.modalContainer}>
+            <p className="black">
+              Oblique Strategies originated in the 1970s from two Gentlement...
+            </p>
+          </div>
         </div>
       </Modal>
     ) : null
 
     return (
-      <div className="ma2 bg-blue">
+      <div
+        className={showModal ? `blur ma2 bg-blue` : `blur-removed ma2 bg-blue`}
+      >
         <Button onClick={this.handleRefresh}>Load another strategy...</Button>
         <div className="mw7-ns center pa3 mt4 mb4">
           <header className="ml1 mr1 mt3 mb3 center">
@@ -92,7 +101,12 @@ class App extends Component {
               {currentCard.content}
             </h1>
           </header>
-          <button onClick={this.handleShow}>&#8505;</button>
+          <button
+            className="dim bg-transparent pointer"
+            onClick={this.handleShow}
+          >
+            &#8505;
+          </button>
           {modal}
         </div>
         <Footer />
