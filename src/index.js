@@ -5,13 +5,13 @@ import App from './App'
 import './index.css'
 import 'tachyons'
 
-const rootEl = document.getElementById('root')
+const appRoot = document.getElementById('app-root')
 
-ReactDOM.render(<App />, rootEl)
+ReactDOM.render(<App />, appRoot)
 
-if (module.hot) {
-  module.hot.accept('./App', () => {
-    const NextApp = require('./App').default
-    ReactDOM.render(<NextApp />, rootEl)
-  })
-}
+// if (module.hot) {
+//   module.hot.accept('./App', () => {
+//     const NextApp = require('./App').default
+//     ReactDOM.render(<NextApp />, rootEl)
+//   })
+// }

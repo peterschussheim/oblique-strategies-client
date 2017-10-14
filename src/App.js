@@ -3,25 +3,86 @@ import './App.css'
 import { randomizer } from './util'
 import Footer from './Footer'
 import Button from './Button'
+import Modal from './Modal'
+
 import cards from './Cards.json'
 
+const styles = {
+  app: {
+    height: '10em',
+    width: '10em',
+    background: 'lightblue',
+    overflow: 'hidden'
+  },
+  modalRoot: {
+    position: 'relative',
+    zIndex: '999'
+  },
+  modal: {
+    backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    position: 'fixed',
+    height: '100%',
+    width: '100%',
+    top: '0',
+    left: '0',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  modalButton: {
+    position: 'flex',
+    height: '75%'
+  }
+}
+
 class App extends Component {
-  state = {
-    currentCard: randomizer(cards),
-    isRefreshEnabled: false,
-    refreshSpeed: 3,
-    showEdition: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentCard: randomizer(cards),
+      isRefreshEnabled: false,
+      refreshSpeed: 3,
+      showModal: false
+    }
+    this.handleRefresh = this.handleRefresh.bind(this)
+    this.handleShow = this.handleShow.bind(this)
+    this.handleHide = this.handleHide.bind(this)
   }
 
-  handleRefresh = event => {
+  handleRefresh(event) {
     event.preventDefault()
     this.setState(prevState => ({
       currentCard: randomizer(cards)
     }))
   }
 
+  handleShow() {
+    this.setState({ showModal: true })
+  }
+
+  handleHide() {
+    this.setState({ showModal: false })
+  }
+
   render() {
-    const { currentCard, showEdition } = this.state
+    const { currentCard, showModal } = this.state
+    const modal = this.state.showModal ? (
+      <Modal>
+        <div style={styles.modal}>
+          <button
+            className="close fixed right-2 top-2 pointer"
+            styles={styles.modalButton}
+            onClick={this.handleHide}
+          >
+            <img src={require('./assets/close.svg')} alt="" />
+          </button>
+          <p>
+            Oblique Strategies originated in the 1970s from two Gentlement...
+          </p>
+        </div>
+      </Modal>
+    ) : null
+
     return (
       <div className="ma2 bg-blue">
         <Button onClick={this.handleRefresh}>Load another strategy...</Button>
@@ -31,12 +92,8 @@ class App extends Component {
               {currentCard.content}
             </h1>
           </header>
-          {showEdition ? (
-            <span className=" fw2 silver mt0 lh-copy">
-              <label>Edition: </label>
-              {currentCard.edition}
-            </span>
-          ) : null}
+          <button onClick={this.handleShow}>&#8505;</button>
+          {modal}
         </div>
         <Footer />
       </div>
