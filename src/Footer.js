@@ -5,7 +5,8 @@ export default () => (
     <small className="f6 db tc">
       <b className="ttu">
         <a
-          className="link black hover-bg-blue"
+          className="link f3 black hover-bg-blue"
+          target="ps"
           href="https://peterschussheim.com/"
         >
           Peter Schussheim

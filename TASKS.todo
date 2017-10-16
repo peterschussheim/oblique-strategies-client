@@ -1,5 +1,5 @@
 oblique-strategies-client:
   ✔ deploy @done (10/2/2017, 4:58:26 PM)
-  ☐ add some documentation to README.md
-  ☐ add link to source
-  ☐ add link to wikipedia entry (https://en.wikipedia.org/wiki/Oblique_Strategies)
+  ✔ add some documentation to README.md @done (2017-10-16 11:59:12)
+  ✔ add link to source @done (2017-10-16 11:59:13)
+  ✔ add link to wikipedia entry (https://en.wikipedia.org/wiki/Oblique_Strategies) @done (2017-10-16 11:59:14)

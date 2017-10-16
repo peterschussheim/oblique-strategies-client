@@ -1,8 +1,8 @@
 .blur {
-  transition: filter 0.1s;
+  transition: filter 0.4s;
   filter: blur(50px);
 }
 .blur-removed {
-  transition: filter 0.1s;
+  transition: filter 0.3s;
   filter: blur(0px);
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './App.css'
 import { randomizer } from './util'
 import Footer from './Footer'
 import Button from './Button'
@@ -7,46 +6,14 @@ import Modal from './Modal'
 
 import cards from './Cards.json'
 
-const styles = {
-  app: {
-    height: '10em',
-    width: '10em',
-    background: 'lightblue',
-    overflow: 'hidden'
-  },
-  modalRoot: {
-    position: 'relative',
-    zIndex: '999'
-  },
-  modal: {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    position: 'fixed',
-    height: '100%',
-    width: '100%',
-    top: '0',
-    left: '0',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  modalContainer: {
-    display: 'flex',
-    height: '50%',
-    width: '75%'
-  },
-  modalButton: {
-    position: 'flex',
-    height: '75%'
-  }
-}
+import './styles/App.css'
+import styles from './styles/styles'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       currentCard: randomizer(cards),
-      isRefreshEnabled: false,
-      refreshSpeed: 3,
       showModal: false
     }
     this.handleRefresh = this.handleRefresh.bind(this)
@@ -82,9 +49,62 @@ class App extends Component {
             <img src={require('./assets/close.svg')} alt="close-modal" />
           </button>
           <div className="bg-blue" style={styles.modalContainer}>
-            <p className="black">
-              Oblique Strategies originated in the 1970s from two Gentlement...
+            <p className="lh-copy black">
+              <span>
+                <a
+                  target="wiki"
+                  href="https://en.wikipedia.org/wiki/Oblique_Strategies"
+                >
+                  Oblique Strategies
+                </a>
+              </span>{' '}
+              originally were a deck of printed cards created by Brian Eno and
+              Peter Schmidt in 1975 with the goal to break creative blocks by
+              encouraging lateral thinking. While originally targeted towards
+              'traditional' creative fields such as music and writing, I believe
+              these cards can be helpful to inspire and lift away mental
+              'blocks'.
             </p>
+            <p className="lh-copy black">
+              <span>
+                See also:
+                <ul>
+                  <li>
+                    <a
+                      target="ex1"
+                      href="http://www.rtqe.net/ObliqueStrategies/"
+                    >
+                      The Oblique Strategies Web Site
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      target="ex1"
+                      href="http://www.joshharrison.net/oblique-strategies/"
+                    >
+                      Random Oblique Strategies
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      target="ex1"
+                      href="http://stoney.sb.org/eno/oblique.html"
+                    >
+                      Stoney's Oblique Strategies
+                    </a>
+                  </li>
+                </ul>
+              </span>
+            </p>
+            <div style={styles.modalSource}>
+              <a
+                className="link pa-1 hover-bg-white black"
+                target="gh"
+                href="https://github.com/peterschussheim/oblique-strategies-client"
+              >
+                Source
+              </a>
+            </div>
           </div>
         </div>
       </Modal>
@@ -101,13 +121,12 @@ class App extends Component {
               {currentCard.content}
             </h1>
           </header>
-          <button
-            className="dim bg-transparent pointer"
-            onClick={this.handleShow}
-          >
-            &#8505;
-          </button>
           {modal}
+        </div>
+        <div className="flex items-center justify-center pa4 bg-white">
+          <a className="ba hover-bg-blue pointer pa2" onClick={this.handleShow}>
+            More Information
+          </a>
         </div>
         <Footer />
       </div>
