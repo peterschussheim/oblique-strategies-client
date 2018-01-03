@@ -1,5 +1,7 @@
 # oblique-strategies-client
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/peterschussheim/oblique-strategies-client.svg)](https://greenkeeper.io/)
+
 [Live demo](https://os.peterschussheim.com/)
 
 ## Overview
