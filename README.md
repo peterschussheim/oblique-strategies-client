@@ -1,6 +1,6 @@
 # oblique-strategies-client
 
-[Live demo](https://os.peterschussheim.com/)
+[Live demo](https://build-ewtwfhsspz.now.sh/)
 
 ## Overview
 
